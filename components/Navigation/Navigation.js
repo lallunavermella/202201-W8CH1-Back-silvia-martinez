@@ -1,9 +1,15 @@
 import Link from "next/link";
+import styled from "styled-components";
+
+const List = styled.ul`
+  display: flex;
+  flex-direction: row;
+`;
 
 const Navigation = () => {
   return (
     <>
-      <ul>
+      <List>
         <li>
           <Link href={"/"}>Home</Link>
         </li>
@@ -19,7 +25,7 @@ const Navigation = () => {
         <li>
           <Link href={"/pokemonISR"}>Mis pokémon ISR</Link>
         </li>
-      </ul>
+      </List>
     </>
   );
 };
