@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-function PokemonsSSR({ results }) {
+function PokemonsSSG({ results }) {
   return (
     <>
       <div>
-        <h2>Pokemon SSR</h2>
+        <h2>Pokemon SSG</h2>
         <ul>
           {results &&
             results.map((pokemon) => (
