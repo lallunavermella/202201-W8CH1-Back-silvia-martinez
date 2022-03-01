@@ -33,4 +33,4 @@ export async function getStaticProps() {
   };
 }
 
-export default PokemonsSSR;
+export default PokemonsSSG;
