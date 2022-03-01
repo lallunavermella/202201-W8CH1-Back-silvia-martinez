@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Pokemon = () => {
   const [pokemons, setPokemons] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(process.env.NEXT_PUBLIC_API)
-      .then((res) => res.json())
-      .then((pokemons) => {
-        setPokemons(pokemons);
-        setLoading(false);
-      });
+    (async () => {
+      setLoading(true);
+      const response = await fetch(process.env.NEXT_PUBLIC_API);
+      const pokemons = await response.json();
+      const pokePromise = Promise.all(
+        pokemons.results.map((pokemon) =>
+          fetch(pokemon.url).then((response) => response.json())
+        )
+      );
+      const pokemonsList = await pokePromise;
+      setPokemons(pokemonsList);
+      setLoading(false);
+    })();
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
@@ -19,10 +26,19 @@ const Pokemon = () => {
 
   return (
     <div>
-      <ul className="pokemon">
-        {pokemons.results.map((pokemon) => (
-          <li key={pokemon.name}>{pokemon.name}</li>
-        ))}
+      <ul>
+        {pokemons &&
+          pokemons.map((pokemon) => (
+            <li key={pokemon.id}>
+              <Image
+                src={pokemon.sprites.other["official-artwork"].front_default}
+                alt={pokemon.forms.name}
+                width="100"
+                height="100"
+              />
+              <p>{pokemon.forms[0].name}</p>
+            </li>
+          ))}
       </ul>
     </div>
   );
