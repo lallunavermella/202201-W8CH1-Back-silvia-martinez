@@ -12,6 +12,14 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+  display: flex;
+}
+li {
+  margin: 10px;
+}
+
 * {
   box-sizing: border-box;
 }
