@@ -4,6 +4,7 @@ function PokemonsSSR({ results }) {
   return (
     <>
       <div>
+        <h2>Pokemon SSR</h2>
         <ul>
           {results &&
             results.map((pokemon) => (
