@@ -3,8 +3,8 @@ import Image from "next/image";
 function PokemonsISR({ results }) {
   return (
     <>
-      <h2>Pokemon ISR</h2>
       <div>
+        <h2>Pokemon ISR</h2>
         <ul>
           {results &&
             results.map((pokemon) => (
