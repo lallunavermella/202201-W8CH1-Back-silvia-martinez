@@ -31,9 +31,9 @@ const Pokemon = () => {
           pokemons.map((pokemon) => (
             <li key={pokemon.id}>
               <Image
-                src={pokemon.sprites.front_default}
+                src={pokemon.sprites.other["official-artwork"].front_default}
                 alt={pokemon.forms.name}
-                width="200"
+                width="100"
                 height="100"
               />
               <p>{pokemon.forms[0].name}</p>
