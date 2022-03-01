@@ -26,6 +26,7 @@ const Pokemon = () => {
 
   return (
     <div>
+      <h2>List Pokemon</h2>
       <ul>
         {pokemons &&
           pokemons.map((pokemon) => (

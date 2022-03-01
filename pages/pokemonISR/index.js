@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-function PokemonsSSG({ results }) {
+function PokemonsISR({ results }) {
   return (
     <>
       <div>
-        <h2>Pokemon SSG</h2>
+        <h2>Pokemon ISR</h2>
         <ul>
           {results &&
             results.map((pokemon) => (
@@ -30,7 +30,8 @@ export async function getStaticProps() {
 
   return {
     props: { results },
+    revalidate: 20,
   };
 }
 
-export default PokemonsSSG;
+export default PokemonsISR;
