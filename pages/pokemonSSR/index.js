@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 function PokemonsSSR({ results }) {
   return (
@@ -8,15 +9,21 @@ function PokemonsSSR({ results }) {
         <ul>
           {results &&
             results.map((pokemon) => (
-              <li key={pokemon.name}>
-                <Image
-                  src={pokemon.image}
-                  alt={pokemon.name}
-                  width="100"
-                  height="100"
-                />
-                <p>{pokemon.name}</p>
-              </li>
+              <Link
+                key={pokemon.name}
+                href={`/pokemonSSR/${pokemon.id}`}
+                passHref
+              >
+                <li>
+                  <Image
+                    src={pokemon.image}
+                    alt={pokemon.name}
+                    width="100"
+                    height="100"
+                  />
+                  <p>{pokemon.name}</p>
+                </li>
+              </Link>
             ))}
         </ul>
       </div>
